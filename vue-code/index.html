@@ -1,0 +1,38 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel=stylesheet href=style.css>
+    <title>Vue Code</title>
+</head>
+<body>
+    <div id="root">
+        <p><input type="text" v-model="text">
+        The value of the input is: {{text}}</p>
+        <p><input type="text" v-model="message">
+        The value of the input is: {{message}}</p>
+        
+      <!--   <ul><li v-for="name in names" v-text="name"></li></ul>
+        <input id="input1" type="text"><button id="button1">Add Name</button> -->
+        
+        <ul><li v-for="name in names" v-text="name"></li></ul>
+        <input id="input2" type="text" v-model="newName">
+        <button v-on:click="addName">Add Name</button>
+        <p><button v-bind:title="title">Hover Over</button>
+        <span v-bind:class="{'is-loading': isLoading}" @click="toggleClass">Kolor tekstu</span>
+          <span>Reversed message: {{reversedMessage}}</span></p>  
+        <ul>All the tasks:<li id="#task" v-for="task in tasks" v-text="task.description"></li></ul>  
+        <ul>Completed:<li id="#task" v-for="task in tasks" v-if="task.completed" v-text="task.description"></li></ul>  
+        <ul>Not completed:<li id="#task" v-for="task in incompleteTasks" v-text="task.description"></li></ul>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="index.vue"></script>
+</body>
+</html>
+
+

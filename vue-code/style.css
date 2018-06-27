@@ -1,0 +1,41 @@
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+  li {  
+    margin: 0.5vw;
+    padding: 0.5vw;
+    border: 0.1vw solid black;
+    transition: background-color 3s, transform 3s;
+  }
+  li:hover {
+    background-color: yellow;  
+    transition: background-color 3s;
+  }
+  li:hover:first-child {
+    transform: translate(-10px,10px);
+    transition: transform 3s;
+  }
+  li:hover:nth-child(2) {
+    transform: rotate(180deg);
+    transition: transform 3s;
+  }
+  li:hover:nth-child(3) {
+    transform: scale(1.5);
+    transition: transform 3s;
+  }
+  li:hover:nth-child(4) {
+    transform: skew(20deg, 20deg);
+    transition: transform 3s;
+  }
+  li:hover:nth-child(5) {
+    transform: matrix(2, -1, 2, 1, 2, 2);
+    transition: transform 3s;
+  }
+  .color-red {
+    color: red;
+  }
+  .is-loading {
+    color: blue;
+  }
