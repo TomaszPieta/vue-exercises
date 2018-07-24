@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    .strikeout {
+        text-decoration: line-through;
+    } .red{
+        color: red;
+    }
+    </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Shopping List</title>
+</head>
+<body>
+    <div id="shopping-list">        
+        <div class="header">
+            <h1>{{ header ? header.toUpperCase() : 'welcome' }}</h1>
+            <button v-if="state==='default'" class="btn-primary btn" @click="changeState('edit')">Add Item</button>
+            <button v-else class="btn-cancel btn" @click="changeState('default')">Cancel</button>
+        </div>
+
+        <div v-if="state === 'edit'" class="add-item-form">
+            <input type="text" v-model="newItem" placeholder="Add new Item" @keyup.enter="saveItem">
+
+            <p>{{characterCount}}/200</p>
+
+            <button class="btn btn-primary" @click="saveItem" :disabled="newItem.length === 0">Save Item</button>
+        </div>
+        <a :href="newItem" target="_blank">Dynamic Link</a>
+        <ul>
+            <li v-for="item in reversedItems" :class="[item.purchased ? 'strikeout' : '', item.priority ? 'red' : '']" @click="togglePurchased(item)">{{ item.label }}</li>
+        </ul>
+        <p v-if="items.length === 0">Nice job</p>
+        <p v-if="items.length === 5">5 items to buy</p>
+        <p v-if="items.length === 6">6 items to buy</p>
+        <p v-if="items.length === 7">7 items to buy</p>
+    </div>
+    <div id="todo">
+        <h1>TodoApp</h1>
+        <TodoList />
+    </div>
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        // import TodoList from './TodoList';
+        
+        // export default {
+        //     components: {
+        //         TodoList
+        //     }
+        // }
+
+        let list = new Vue({
+            el: '#shopping-list',
+            data: {
+                header: 'Shopping list app',
+                state: 'edit',
+                newItem: '',
+                items: [{
+                        label: '10 oranges', purchased: false,
+                        priority: false,
+                    },{
+                        label: '4 apples', purchased: true,
+                        priority: false,
+                    },{
+                        label: '6 tomatoes', purchased: false,
+                        priority: true,
+                    }]
+            },computed: {
+                reversedItems() {
+                    return this.items.slice(0).reverse();
+                }
+            },methods: {
+                saveItem() {
+                    this.items.push({
+                        label: this.newItem,
+                        purchased: false,
+                    });
+                    this.newItem = '';
+                },changeState(newState) {
+                    this.state = newState;
+                    this.newItem = '';
+                },togglePurchased(item) {
+                    item.purchased = !item.purchased;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
