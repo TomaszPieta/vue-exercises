@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Vue Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <h1>People of Vue</h1>
+        <button @click="start">Upload yesterday's votes</button>
+        <ul class="list-group">
+            <li v-for="candidate in candidates" class="list-group-item">
+                {{candidate.name}} {{candidate.votes}}
+                <button @click="candidate.votes++">Vote</button>
+            </li>
+        </ul>
+        <h2>Our mayor is {{mayor.name}}!</h2>
+      <button @click="clear">Reset voting</button>
+    </div>
+    <script src="http://unpkg.com/vue"></script>
+    <script src="index.js"></script>
+</body>
+</html>
