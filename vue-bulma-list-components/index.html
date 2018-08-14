@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Bulma List Component</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
+</head>
+<body>
+    <div id="container">
+        <div id="root" class="container">
+            <modal v-if="showModal"></modal>
+            <button @click="showModal = true">Show Modal</button>
+            <task>Go to bank</task>
+            <task>Go to school</task>
+            <task>Go home</task>
+            <task>Go to sleep</task>
+            <hr>
+            <task-list></task-list>
+            <hr>
+            <message title="Hello World" body="Lorem ipsum"></message>
+            <message title="Hello Universe" body="Lorem pipsum"></message>
+            <button :class="{'is-loading':isLoading}" @click="toggleClass">{{ reverse }}</button>
+            <ul>
+              <li v-for="task in tasks" v-text="task.description" v-if="task.completed"></li>
+            </ul>
+            <h3>Incomplete Tasks</h3>
+            <ul>
+              <li v-for="task in incomplete" v-text="task.description"></li>
+            </ul>
+          <!--   <h3>Completed Tasks</h3>
+            <ul>
+              <li v-for="task in complete" v-text="task.description"></li>
+            </ul> -->
+            <hr>
+              <ul>
+                <li v-for="name in names" v-text="name"></li>
+              </ul>
+              <input type="text" id="input2" v-model="newName" v-on:keyUp.enter="addName">
+              <button id="button2" @click="addName">Add</button>  
+          </div>
+    </div>
+    <script src="http://unpkg.com/vue"></script>
+    <script src="index.js"></script>
+</body>
+</html>
