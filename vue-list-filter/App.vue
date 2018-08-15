@@ -3,7 +3,7 @@
   <h1>Famous people</h1>
   <div class="sort">
     <label>Find</label>
-    <input v-model="findName"type="text" />
+    <input v-model="findName" type="text" />
   </div>
   <ul>
     <li v-for="name in filteredNames">

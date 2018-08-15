@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <title>Vue Menu Tabs</title>
+</head>
+<body>
+    <div id="root" class="container is-warning is-fullheight">
+        <tabs>
+          <tab name="my mission" :selected="true">
+            <h1>Content Tab my mission</h1>
+          </tab>
+          <tab name="your mission">
+            <h1>Content Tab your mission</h1>
+          </tab>
+          <tab name="their mission">
+            <h1>Content Tab their mission</h1>
+          </tab>
+        </tabs>
+      </div>
+    <script src="http://unpkg.com/vue"></script>
+    <script src="index.js"></script>
+</body>
+</html>
